@@ -42,5 +42,5 @@ enable_testing()
 # Ajouter un exécutable pour les tests
 add_executable(SnakeGameTestExecutable tests/TestMain.cpp)
 
-# Lier GoogleTest
-target_link_libraries(SnakeGameTestExecutable gtest gtest_main)
+# Lier GoogleTest et les bibliothèques du projet
+target_link_libraries(SnakeGameTestExecutable gtest gtest_main sfml-system sfml-window sfml-graphics sfml-audio)
