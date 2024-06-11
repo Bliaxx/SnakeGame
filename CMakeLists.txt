@@ -13,7 +13,7 @@ add_subdirectory(lib/SFML)
 add_subdirectory(tests)
 
 # Ajouter l'exécutable
-add_executable(SnakeGame src/main.cpp)
+add_executable(SnakeGame src/SnakeGame.cpp)
 
 # Lier les bibliothèques SFML directement
 target_link_libraries(SnakeGame sfml-system sfml-window sfml-graphics sfml-audio)
@@ -40,7 +40,7 @@ endif()
 enable_testing()
 
 # Ajouter un exécutable pour les tests
-add_executable(SnakeGameTestExecutable tests/test_main.cpp)
+add_executable(SnakeGameTestExecutable tests/TestMain.cpp)
 
 # Lier GoogleTest
 target_link_libraries(SnakeGameTestExecutable gtest gtest_main)
