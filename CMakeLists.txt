@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
+cmake_policy(SET CMP0135 NEW)
 project(SnakeGame)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -39,7 +40,7 @@ endif()
 enable_testing()
 
 # Ajouter un exécutable pour les tests
-add_executable(SnakeGameTests tests/test_main.cpp)
+add_executable(SnakeGameTestExecutable tests/test_main.cpp)
 
 # Lier GoogleTest
-target_link_libraries(SnakeGameTests gtest gtest_main)
+target_link_libraries(SnakeGameTestExecutable gtest gtest_main)
