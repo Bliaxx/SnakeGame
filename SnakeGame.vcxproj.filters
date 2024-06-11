@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{6e76b804-6ce9-43ad-90e7-1a494dadf9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{57528e4c-feba-4303-8a7b-aa04827a0d23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core">
+      <UniqueIdentifier>{f56060fd-ee90-4789-8840-2ce9c32f1d24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{56cb41e5-0729-4b73-b713-3eb377157c14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Utils">
+      <UniqueIdentifier>{995dff1a-917a-49bf-a565-0fc2006643f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utils">
+      <UniqueIdentifier>{5b0e0dbf-5137-4b4e-9203-8ca01465755e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Display">
+      <UniqueIdentifier>{cafd8c02-6e6a-44ff-8029-9c43589a1959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Display">
+      <UniqueIdentifier>{1699a534-dc06-499a-9229-1a9dfdd90340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Interfaces">
+      <UniqueIdentifier>{6885291d-66ca-4533-87c6-ab8605a46634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Managers">
+      <UniqueIdentifier>{613bed24-2bad-462e-97dd-b18a6426e526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Managers">
+      <UniqueIdentifier>{52714b81-23da-473a-b3b9-896c72e32b4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Entities">
+      <UniqueIdentifier>{adc2ea2c-d7ac-4818-a6ec-af76722c58f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entities">
+      <UniqueIdentifier>{9cfa5bd3-2981-4436-b6cf-27be24d98e3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Settings">
+      <UniqueIdentifier>{71ba2287-2bc8-405d-bd81-635a349e1cf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{caf1f4a9-ab7f-41a0-bccf-22602ebf2106}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Utils\Constants.cpp">
+      <Filter>src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Utils.cpp">
+      <Filter>src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\InputManager.cpp">
+      <Filter>src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Food.cpp">
+      <Filter>src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Snake.cpp">
+      <Filter>src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\SnakeSegment.cpp">
+      <Filter>src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Display\ScoreDisplay.cpp">
+      <Filter>src\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Game.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GameObject.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\TransformComponent.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SnakeGame.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\TestMain.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObject.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreDisplay.h">
+      <Filter>include\Display</Filter>
+    </ClInclude>
+    <ClInclude Include="IBounded.h">
+      <Filter>include\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollidable.h">
+      <Filter>include\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IInputReceiver.h">
+      <Filter>include\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMovable.h">
+      <Filter>include\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IScorable.h">
+      <Filter>include\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IUpdatable.h">
+      <Filter>include\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>include\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>include\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeSegment.h">
+      <Filter>include\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>include\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>include\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveSettings.h">
+      <Filter>include\Settings</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
