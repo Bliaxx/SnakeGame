@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/lib/SFML/include)
 
 # Ajouter les sous-répertoires
+add_subdirectory(include)
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(lib/SFML)
