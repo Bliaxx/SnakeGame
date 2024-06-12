@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.10)
-cmake_policy(SET CMP0135 NEW)
 project(SnakeGame)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -9,11 +8,11 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/lib/SFML/inc
 
 # Ajouter les sous-répertoires
 add_subdirectory(src)
-add_subdirectory(lib/SFML)
 add_subdirectory(tests)
+add_subdirectory(lib/SFML)
 
 # Ajouter l'exécutable
-add_executable(SnakeGame src/SnakeGame.cpp)
+add_executable(SnakeGame src/main.cpp)
 
 # Lier les bibliothèques SFML directement
 target_link_libraries(SnakeGame sfml-system sfml-window sfml-graphics sfml-audio)
@@ -25,6 +24,7 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
 )
+
 # Pour les anciennes versions de CMake
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
   FetchContent_GetProperties(googletest)
@@ -40,7 +40,7 @@ endif()
 enable_testing()
 
 # Ajouter un exécutable pour les tests
-add_executable(SnakeGameTestExecutable tests/TestMain.cpp)
+add_executable(SnakeGameTestExecutable tests/test_main.cpp)
 
 # Lier GoogleTest et les bibliothèques du projet
 target_link_libraries(SnakeGameTestExecutable gtest gtest_main sfml-system sfml-window sfml-graphics sfml-audio)
