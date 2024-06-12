@@ -10,14 +10,17 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/lib/SFML/inc
 # Ajouter les sous-répertoires
 add_subdirectory(include)
 add_subdirectory(src)
-add_subdirectory(tests)
 add_subdirectory(lib/SFML)
+add_subdirectory(tests)
 
 # Ajouter l'exécutable
 add_executable(SnakeGame src/SnakeGame.cpp)
 
 # Lier les bibliothèques SFML directement
 target_link_libraries(SnakeGame sfml-system sfml-window sfml-graphics sfml-audio)
+
+# Lier les en-têtes
+target_link_libraries(SnakeGame SnakeGameHeaders)
 
 # Télécharger et configurer GoogleTest
 include(FetchContent)
@@ -45,4 +48,4 @@ enable_testing()
 add_executable(SnakeGameTestExecutable tests/TestMain.cpp)
 
 # Lier GoogleTest et les bibliothèques du projet
-target_link_libraries(SnakeGameTestExecutable gtest gtest_main sfml-system sfml-window sfml-graphics)
+target_link_libraries(SnakeGameTestExecutable gtest gtest_main sfml-system sfml-window sfml-graphics sfml-audio SnakeGameHeaders)
