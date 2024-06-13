@@ -4,20 +4,6 @@ project(SnakeGame)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Chemins d'inclusion
-include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(${PROJECT_SOURCE_DIR}/include/Core)
-include_directories(${PROJECT_SOURCE_DIR}/include/Display)
-include_directories(${PROJECT_SOURCE_DIR}/include/Entities)
-include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
-include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
-include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
-include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
-include_directories(${sfml_SOURCE_DIR}/include)
-
-# Chemins des bibliothèques
-link_directories(${sfml_BUILD_DIR}/lib/Debug)
-
 include(FetchContent)
 
 # Récupérer SFML depuis GitHub
