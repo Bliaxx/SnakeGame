@@ -18,8 +18,16 @@ include_directories(${PROJECT_SOURCE_DIR}/lib/SFML/include)
 # Chemins des bibliothèques
 link_directories(${PROJECT_SOURCE_DIR}/lib/SFML/lib)
 
-# Téléchargement et configuration de GoogleTest
 include(FetchContent)
+
+# Récupérer SFML depuis GitHub
+FetchContent_Declare(
+  SFML
+  GIT_REPOSITORY https://github.com/SFML/SFML.git
+  GIT_TAG 2.5.1
+)
+
+FetchContent_MakeAvailable(SFML)
 
 FetchContent_Declare(
     googletest

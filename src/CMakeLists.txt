@@ -31,11 +31,3 @@ add_custom_command(TARGET SnakeGame POST_BUILD
         "${PROJECT_SOURCE_DIR}/assets/fonts/arial.ttf"
         "$<TARGET_FILE_DIR:SnakeGame>/../assets/fonts/arial.ttf"
 )
-
-# Copier automatiquement les fichiers DLL de SFML dans le répertoire de build
-add_custom_command(TARGET SnakeGame POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${PROJECT_SOURCE_DIR}/lib/SFML/bin/sfml-graphics-d-2.dll"
-        "${PROJECT_SOURCE_DIR}/lib/SFML/bin/sfml-window-d-2.dll"
-        "${PROJECT_SOURCE_DIR}/lib/SFML/bin/sfml-system-d-2.dll"
-        $<TARGET_FILE_DIR:SnakeGame>)
