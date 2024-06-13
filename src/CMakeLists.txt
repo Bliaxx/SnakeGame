@@ -53,16 +53,16 @@ add_custom_command(TARGET SnakeGame POST_BUILD
 if(WIN32 AND CMAKE_BUILD_TYPE MATCHES Debug)
     add_custom_command(TARGET SnakeGame POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${sfml_BINARY_DIR}/bin/Debug/sfml-graphics-d-2.dll"
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-graphics-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-graphics-d-2.dll"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${sfml_BINARY_DIR}/bin/Debug/sfml-window-d-2.dll"
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-window-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-window-d-2.dll"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${sfml_BINARY_DIR}/bin/Debug/sfml-system-d-2.dll"
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-system-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-system-d-2.dll"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${sfml_BINARY_DIR}/bin/Debug/sfml-audio-d-2.dll"
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-audio-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-audio-d-2.dll"
     )
 endif()
