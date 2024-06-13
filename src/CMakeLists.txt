@@ -24,19 +24,19 @@ add_executable(SnakeGame ${SOURCES} ${HEADERS})
 # Lier les bibliothèques SFML
 if(WIN32)
     set(SFML_LIBS
-        ${sfml_BINARY_DIR}/lib/Debug/sfml-graphics-d.lib
-        ${sfml_BINARY_DIR}/lib/Debug/sfml-window-d.lib
-        ${sfml_BINARY_DIR}/lib/Debug/sfml-system-d.lib
-        ${sfml_BINARY_DIR}/lib/Debug/sfml-audio-d.lib
+        sfml-graphics-d.lib
+        sfml-window-d.lib
+        sfml-system-d.lib
     )
 else()
     set(SFML_LIBS
-        ${sfml_BINARY_DIR}/lib/libsfml-graphics.so
-        ${sfml_BINARY_DIR}/lib/libsfml-window.so
-        ${sfml_BINARY_DIR}/lib/libsfml-system.so
-        ${sfml_BINARY_DIR}/lib/libsfml-audio.so
+        libsfml-graphics.so
+        libsfml-window.so
+        libsfml-system.so
     )
 endif()
+
+target_link_directories(SnakeGame PRIVATE ${sfml_BINARY_DIR}/lib)
 
 target_link_libraries(SnakeGame ${SFML_LIBS})
 
@@ -49,9 +49,7 @@ add_custom_command(TARGET SnakeGame POST_BUILD
         "$<TARGET_FILE_DIR:SnakeGame>/../assets/fonts/arial.ttf"
 )
 
-# Copier automatiquement les fichiers DLL de SFML dans le répertoire de build
-if(WIN32 AND CMAKE_BUILD_TYPE MATCHES Debug)
-    add_custom_command(TARGET SnakeGame POST_BUILD
+add_custom_command(TARGET SnakeGame POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${sfml_BINARY_DIR}/lib/Debug/sfml-graphics-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-graphics-d-2.dll"
@@ -65,4 +63,3 @@ if(WIN32 AND CMAKE_BUILD_TYPE MATCHES Debug)
             "${sfml_BINARY_DIR}/lib/Debug/sfml-audio-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-audio-d-2.dll"
     )
-endif()

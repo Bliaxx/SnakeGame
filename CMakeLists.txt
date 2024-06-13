@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.30)
 project(SnakeGame)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -33,3 +33,6 @@ enable_testing()
 # Add subdirectories
 add_subdirectory(src)
 add_subdirectory(tests)
+
+set_property(TARGET sfml-audio PROPERTY CXX_STANDARD 14)
+set_property(TARGET sfml-audio PROPERTY CXX_STANDARD_REQUIRED ON)
