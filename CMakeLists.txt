@@ -13,10 +13,10 @@ include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
 include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
 include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
 include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
-include_directories(${PROJECT_SOURCE_DIR}/lib/SFML/include)
+include_directories(${sfml_SOURCE_DIR}/include)
 
 # Chemins des bibliothèques
-link_directories(${PROJECT_SOURCE_DIR}/lib/SFML/lib)
+link_directories(${sfml_BUILD_DIR}/lib/Debug)
 
 include(FetchContent)
 

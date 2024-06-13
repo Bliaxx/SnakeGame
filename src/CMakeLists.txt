@@ -1,13 +1,3 @@
-# Ajout des répertoires d'inclusion pour les fichiers source
-include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(${PROJECT_SOURCE_DIR}/include/Core)
-include_directories(${PROJECT_SOURCE_DIR}/include/Display)
-include_directories(${PROJECT_SOURCE_DIR}/include/Entities)
-include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
-include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
-include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
-include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
-
 # Ajout des fichiers source et des fichiers d'en-tête
 file(GLOB_RECURSE SOURCES
     ${PROJECT_SOURCE_DIR}/src/*.cpp
