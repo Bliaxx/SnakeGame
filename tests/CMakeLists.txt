@@ -1,10 +1,19 @@
-# Inclure les répertoires de tests
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+# Ajout des répertoires d'inclusion pour les tests
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include/Core)
+include_directories(${PROJECT_SOURCE_DIR}/include/Display)
+include_directories(${PROJECT_SOURCE_DIR}/include/Entities)
+include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
+include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
+include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
+include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
 
-# Ajouter les fichiers de tests
-file(GLOB TEST_SOURCES "*.cpp")
+# Ajout de l'exécutable de test
+add_executable(SnakeGameTests TestMain.cpp)
 
-add_executable(SnakeGameTests ${TEST_SOURCES})
+# Lien vers les bibliothèques nécessaires
+target_link_libraries(SnakeGameTests sfml-graphics sfml-window sfml-system gtest gtest_main)
 
-# Lier GoogleTest et les bibliothèques du projet
-target_link_libraries(SnakeGameTests gtest gtest_main sfml-system sfml-window sfml-graphics SnakeGameHeaders)
+# Ajout des tests
+include(GoogleTest)
+gtest_discover_tests(SnakeGameTests)

@@ -1,51 +1,41 @@
 cmake_minimum_required(VERSION 3.10)
-cmake_policy(SET CMP0135 NEW)
 project(SnakeGame)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Inclure les répertoires d'inclusion
-include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/lib/SFML/include)
+# Chemins d'inclusion
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include/Core)
+include_directories(${PROJECT_SOURCE_DIR}/include/Display)
+include_directories(${PROJECT_SOURCE_DIR}/include/Entities)
+include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
+include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
+include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
+include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
+include_directories(${PROJECT_SOURCE_DIR}/lib/SFML/include)
 
-# Ajouter les sous-répertoires
-add_subdirectory(include)
-add_subdirectory(src)
-add_subdirectory(lib/SFML)
-add_subdirectory(tests)
+# Chemins des bibliothèques
+link_directories(${PROJECT_SOURCE_DIR}/lib/SFML/lib)
 
-# Ajouter l'exécutable
-add_executable(SnakeGame src/SnakeGame.cpp)
-
-# Lier les bibliothèques SFML directement
-target_link_libraries(SnakeGame sfml-system sfml-window sfml-graphics sfml-audio)
-
-# Lier les en-têtes
-target_link_libraries(SnakeGame SnakeGameHeaders)
-
-# Télécharger et configurer GoogleTest
+# Téléchargement et configuration de GoogleTest
 include(FetchContent)
 
 FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+    googletest
+    URL https://github.com/google/googletest/archive/release-1.11.0.zip
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
-# Pour les anciennes versions de CMake
-if(${CMAKE_VERSION} VERSION_LESS 3.14)
-  FetchContent_GetProperties(googletest)
-  if(NOT googletest_POPULATED)
-    FetchContent_Populate(googletest)
-    add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
-  endif()
-else()
-  FetchContent_MakeAvailable(googletest)
+# Prévenir GoogleTest de ne pas définir le mode principal (main) en CMake 3.14+
+if(CMAKE_VERSION VERSION_GREATER 3.12)
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 endif()
 
-# Activer les tests
+FetchContent_MakeAvailable(googletest)
+
 enable_testing()
 
-# Ajouter un exécutable pour les tests
-add_executable(SnakeGameTestExecutable tests/TestMain.cpp)
-
-# Lier GoogleTest et les bibliothèques du projet
-target_link_libraries(SnakeGameTestExecutable gtest gtest_main sfml-system sfml-window sfml-graphics sfml-audio SnakeGameHeaders)
+# Add subdirectories
+add_subdirectory(src)
+add_subdirectory(tests)

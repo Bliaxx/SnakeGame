@@ -1,5 +1,41 @@
-file(GLOB_RECURSE SOURCES "*.cpp")
+# Ajout des répertoires d'inclusion pour les fichiers source
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include/Core)
+include_directories(${PROJECT_SOURCE_DIR}/include/Display)
+include_directories(${PROJECT_SOURCE_DIR}/include/Entities)
+include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
+include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
+include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
+include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
 
-add_library(SnakeGameLib ${SOURCES})
+# Ajout des fichiers source et des fichiers d'en-tête
+file(GLOB_RECURSE SOURCES
+    ${PROJECT_SOURCE_DIR}/src/*.cpp
+)
 
-target_link_libraries(SnakeGameLib sfml-system sfml-window sfml-graphics)
+file(GLOB_RECURSE HEADERS
+    ${PROJECT_SOURCE_DIR}/include/*.h
+)
+
+# Ajout de l'exécutable principal
+add_executable(SnakeGame ${SOURCES} ${HEADERS})
+
+# Lien vers les bibliothèques nécessaires
+target_link_libraries(SnakeGame sfml-graphics-d sfml-window-d sfml-system-d)
+
+# Copier les actifs (fonts) dans le répertoire de build
+add_custom_command(TARGET SnakeGame POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+        "$<TARGET_FILE_DIR:SnakeGame>/../assets/fonts"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PROJECT_SOURCE_DIR}/assets/fonts/arial.ttf"
+        "$<TARGET_FILE_DIR:SnakeGame>/../assets/fonts/arial.ttf"
+)
+
+# Copier automatiquement les fichiers DLL de SFML dans le répertoire de build
+add_custom_command(TARGET SnakeGame POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PROJECT_SOURCE_DIR}/lib/SFML/bin/sfml-graphics-d-2.dll"
+        "${PROJECT_SOURCE_DIR}/lib/SFML/bin/sfml-window-d-2.dll"
+        "${PROJECT_SOURCE_DIR}/lib/SFML/bin/sfml-system-d-2.dll"
+        $<TARGET_FILE_DIR:SnakeGame>)
