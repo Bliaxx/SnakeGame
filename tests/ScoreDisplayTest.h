@@ -2,10 +2,11 @@
 #include <gmock/gmock.h>
 #include <SFML/Graphics.hpp>
 #include "ScoreDisplay.h"
+#include "ScoreManager.h"
 
 class MockScoreManager : public ScoreManager {
 public:
-    MOCK_METHOD(int, GetScore, (), (const, override));
+    MOCK_METHOD(int, GetScore, (), (const));
 };
 
 class ScoreDisplayTest : public ::testing::Test {
