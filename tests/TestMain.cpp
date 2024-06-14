@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "GameObjectTest.h"
+#include <gmock/gmock.h>
+#include "ScoreDisplayTest.h"
 
 int main(int argc, char** argv)
 {

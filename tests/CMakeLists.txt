@@ -2,13 +2,25 @@
 file(GLOB_RECURSE TEST_SOURCES
     ${PROJECT_SOURCE_DIR}/tests/*.cpp
 )
+file(GLOB_RECURSE TEST_HEADERS
+    ${PROJECT_SOURCE_DIR}/tests/*.h
+)
 
 # Ajouter l'exécutable de test
-add_executable(SnakeGameTests ${TEST_SOURCES})
+add_executable(SnakeGameTests ${TEST_SOURCES} ${TEST_HEADERS})
 
 # Inclure les répertoires d'en-tête de SFML
 include_directories(${sfml_SOURCE_DIR}/include)
 include_directories(${googletest_SOURCE_DIR}/googletest/include)
+include_directories(${googletest_SOURCE_DIR}/googlemock/include)
+include_directories(${PROJECT_SOURCE_DIR}/tests)
+include_directories(${PROJECT_SOURCE_DIR}/include/Core)
+include_directories(${PROJECT_SOURCE_DIR}/include/Display)
+include_directories(${PROJECT_SOURCE_DIR}/include/Entities)
+include_directories(${PROJECT_SOURCE_DIR}/include/Interfaces)
+include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
+include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
+include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
 
 # Lier les bibliothèques nécessaires
 if(WIN32)

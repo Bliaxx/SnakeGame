@@ -152,7 +152,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameObjectTest.cpp" />
     <ClCompile Include="src\Core\Game.cpp" />
     <ClCompile Include="src\Core\GameObject.cpp" />
     <ClCompile Include="src\Core\TransformComponent.cpp" />
@@ -185,6 +184,7 @@
     <ClInclude Include="include\Settings\MoveSettings.h" />
     <ClInclude Include="include\Utils\Constants.h" />
     <ClInclude Include="include\Utils\Utils.h" />
+    <ClInclude Include="ScoreDisplayTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

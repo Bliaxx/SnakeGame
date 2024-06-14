@@ -96,9 +96,6 @@
     <ClCompile Include="tests\TestMain.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectTest.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Core\Game.h">
@@ -154,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="include\Utils\Utils.h">
       <Filter>include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreDisplayTest.h">
+      <Filter>tests</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
