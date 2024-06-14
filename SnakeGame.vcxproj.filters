@@ -25,9 +25,6 @@
     <Filter Include="src\Core">
       <UniqueIdentifier>{56cb41e5-0729-4b73-b713-3eb377157c14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Utils">
-      <UniqueIdentifier>{995dff1a-917a-49bf-a565-0fc2006643f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Utils">
       <UniqueIdentifier>{5b0e0dbf-5137-4b4e-9203-8ca01465755e}</UniqueIdentifier>
     </Filter>
@@ -37,26 +34,29 @@
     <Filter Include="include\Display">
       <UniqueIdentifier>{1699a534-dc06-499a-9229-1a9dfdd90340}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Interfaces">
-      <UniqueIdentifier>{6885291d-66ca-4533-87c6-ab8605a46634}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\Managers">
-      <UniqueIdentifier>{613bed24-2bad-462e-97dd-b18a6426e526}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Managers">
       <UniqueIdentifier>{52714b81-23da-473a-b3b9-896c72e32b4f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="include\Entities">
-      <UniqueIdentifier>{adc2ea2c-d7ac-4818-a6ec-af76722c58f5}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Entities">
       <UniqueIdentifier>{9cfa5bd3-2981-4436-b6cf-27be24d98e3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\Settings">
-      <UniqueIdentifier>{71ba2287-2bc8-405d-bd81-635a349e1cf2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="tests">
       <UniqueIdentifier>{caf1f4a9-ab7f-41a0-bccf-22602ebf2106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Entities">
+      <UniqueIdentifier>{7e3cfdee-9a2d-4894-9d72-b391db578c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Interfaces">
+      <UniqueIdentifier>{4206f236-1570-4766-9212-168ffaf61cd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Managers">
+      <UniqueIdentifier>{a3dd9bab-a9b0-4689-a67c-c010dec407e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Settings">
+      <UniqueIdentifier>{debf924d-600d-4611-8a60-947f5d6aac91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Utils">
+      <UniqueIdentifier>{69931088-6d59-43f2-a85e-459a37c3e3b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,61 +96,64 @@
     <ClCompile Include="tests\TestMain.cpp">
       <Filter>tests</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjectTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="include\Core\Game.h">
       <Filter>include\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="include\Core\GameObject.h">
       <Filter>include\Core</Filter>
     </ClInclude>
-    <ClInclude Include="TransformComponent.h">
+    <ClInclude Include="include\Core\TransformComponent.h">
       <Filter>include\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>include\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>include\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreDisplay.h">
+    <ClInclude Include="include\Display\ScoreDisplay.h">
       <Filter>include\Display</Filter>
     </ClInclude>
-    <ClInclude Include="IBounded.h">
+    <ClInclude Include="include\Entities\Snake.h">
+      <Filter>include\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Entities\SnakeSegment.h">
+      <Filter>include\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Entities\Food.h">
+      <Filter>include\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Interfaces\IBounded.h">
       <Filter>include\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="ICollidable.h">
+    <ClInclude Include="include\Interfaces\ICollidable.h">
       <Filter>include\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IInputReceiver.h">
+    <ClInclude Include="include\Interfaces\IInputReceiver.h">
       <Filter>include\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IMovable.h">
+    <ClInclude Include="include\Interfaces\IMovable.h">
       <Filter>include\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IScorable.h">
+    <ClInclude Include="include\Interfaces\IScorable.h">
       <Filter>include\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="IUpdatable.h">
+    <ClInclude Include="include\Interfaces\IUpdatable.h">
       <Filter>include\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
+    <ClInclude Include="include\Managers\InputManager.h">
       <Filter>include\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreManager.h">
+    <ClInclude Include="include\Managers\ScoreManager.h">
       <Filter>include\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="SnakeSegment.h">
-      <Filter>include\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Snake.h">
-      <Filter>include\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Food.h">
-      <Filter>include\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveSettings.h">
+    <ClInclude Include="include\Settings\MoveSettings.h">
       <Filter>include\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\Constants.h">
+      <Filter>include\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Utils\Utils.h">
+      <Filter>include\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

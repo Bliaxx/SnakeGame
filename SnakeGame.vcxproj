@@ -152,6 +152,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameObjectTest.cpp" />
     <ClCompile Include="src\Core\Game.cpp" />
     <ClCompile Include="src\Core\GameObject.cpp" />
     <ClCompile Include="src\Core\TransformComponent.cpp" />
@@ -166,24 +167,24 @@
     <ClCompile Include="tests\TestMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="Food.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="ICollidable.h" />
-    <ClInclude Include="IInputReceiver.h" />
-    <ClInclude Include="IBounded.h" />
-    <ClInclude Include="IMovable.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="IScorable.h" />
-    <ClInclude Include="IUpdatable.h" />
-    <ClInclude Include="MoveSettings.h" />
-    <ClInclude Include="ScoreDisplay.h" />
-    <ClInclude Include="ScoreManager.h" />
-    <ClInclude Include="Snake.h" />
-    <ClInclude Include="SnakeSegment.h" />
-    <ClInclude Include="TransformComponent.h" />
-    <ClInclude Include="Utils.h" />
+    <ClInclude Include="include\Core\Game.h" />
+    <ClInclude Include="include\Core\GameObject.h" />
+    <ClInclude Include="include\Core\TransformComponent.h" />
+    <ClInclude Include="include\Display\ScoreDisplay.h" />
+    <ClInclude Include="include\Entities\Food.h" />
+    <ClInclude Include="include\Entities\Snake.h" />
+    <ClInclude Include="include\Entities\SnakeSegment.h" />
+    <ClInclude Include="include\Interfaces\IBounded.h" />
+    <ClInclude Include="include\Interfaces\ICollidable.h" />
+    <ClInclude Include="include\Interfaces\IInputReceiver.h" />
+    <ClInclude Include="include\Interfaces\IMovable.h" />
+    <ClInclude Include="include\Interfaces\IScorable.h" />
+    <ClInclude Include="include\Interfaces\IUpdatable.h" />
+    <ClInclude Include="include\Managers\InputManager.h" />
+    <ClInclude Include="include\Managers\ScoreManager.h" />
+    <ClInclude Include="include\Settings\MoveSettings.h" />
+    <ClInclude Include="include\Utils\Constants.h" />
+    <ClInclude Include="include\Utils\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
