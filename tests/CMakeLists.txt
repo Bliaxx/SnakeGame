@@ -27,7 +27,9 @@ endif()
 
 set(GOOGLE_TEST_LIBS
       gtest_maind.lib
+      gmock_maind.lib
       gtestd.lib
+      gmockd.lib
 )
 
 target_link_directories(SnakeGameTests PRIVATE ${sfml_BINARY_DIR}/lib)
@@ -35,3 +37,18 @@ target_link_directories(SnakeGameTests PRIVATE ${PROJECT_SOURCE_DIR}/bin/lib)
 
 target_link_libraries(SnakeGameTests ${SFML_LIBS})
 target_link_libraries(SnakeGameTests ${GOOGLE_TEST_LIBS})
+
+add_custom_command(TARGET SnakeGameTests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${PROJECT_SOURCE_DIR}/bin/bin/Debug/gtestd.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/gtestd.dll"
+       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${PROJECT_SOURCE_DIR}/bin/bin/Debug/gtest_maind.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/gtest_maind.dll"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${PROJECT_SOURCE_DIR}/bin/bin/Debug/gmockd.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/gmockd.dll"
+       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${PROJECT_SOURCE_DIR}/bin/bin/Debug/gmock_maind.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/gmock_maind.dll"
+    )
