@@ -9,7 +9,7 @@ private:
     sf::RenderWindow mockRenderWindow;
 
 public:
-    MockWindow() : Window(Constants::WINDOW_WIDH, Constants::WINDOW_HEIGHT, "Snake Game") {}
+    MockWindow() : Window(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, "Snake Game") {}
 
 public:
     MOCK_METHOD(bool, pollEvent, (sf::Event& event), (override));
