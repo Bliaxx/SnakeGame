@@ -22,6 +22,12 @@ include_directories(${PROJECT_SOURCE_DIR}/include/Managers)
 include_directories(${PROJECT_SOURCE_DIR}/include/Settings)
 include_directories(${PROJECT_SOURCE_DIR}/include/Utils)
 
+add_dependencies(SnakeGameTests SnakeGameLib)
+
+target_link_libraries(SnakeGameTests PRIVATE SnakeGameLib)
+
+target_compile_definitions(SnakeGameTests PRIVATE GTEST_LINKED_AS_SHARED_LIBRARY)
+
 # Lier les bibliothèques nécessaires
 if(WIN32)
     set(SFML_LIBS
@@ -47,8 +53,28 @@ set(GOOGLE_TEST_LIBS
 target_link_directories(SnakeGameTests PRIVATE ${sfml_BINARY_DIR}/lib)
 target_link_directories(SnakeGameTests PRIVATE ${PROJECT_SOURCE_DIR}/bin/lib)
 
-target_link_libraries(SnakeGameTests ${SFML_LIBS})
-target_link_libraries(SnakeGameTests ${GOOGLE_TEST_LIBS})
+target_link_libraries(SnakeGameTests PRIVATE ${SFML_LIBS})
+target_link_libraries(SnakeGameTests PRIVATE ${GOOGLE_TEST_LIBS})
+
+add_custom_command(TARGET SnakeGameTests POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+        "$<TARGET_FILE_DIR:SnakeGameTests>/../assets/fonts"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PROJECT_SOURCE_DIR}/assets/fonts/arial.ttf"
+        "$<TARGET_FILE_DIR:SnakeGameTests>/../assets/fonts/arial.ttf"
+)
+
+add_custom_command(TARGET SnakeGameTests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-graphics-d-2.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/sfml-graphics-d-2.dll"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-window-d-2.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/sfml-window-d-2.dll"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${sfml_BINARY_DIR}/lib/Debug/sfml-system-d-2.dll"
+            "$<TARGET_FILE_DIR:SnakeGameTests>/sfml-system-d-2.dll"
+    )
 
 add_custom_command(TARGET SnakeGameTests POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different

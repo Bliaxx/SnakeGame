@@ -18,6 +18,8 @@ file(GLOB_RECURSE HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.h
 )
 
+add_library(SnakeGameLib STATIC ${SOURCES} ${HEADERS})
+
 # Ajout de l'exécutable principal
 add_executable(SnakeGame ${SOURCES} ${HEADERS})
 
@@ -39,6 +41,7 @@ endif()
 target_link_directories(SnakeGame PRIVATE ${sfml_BINARY_DIR}/lib)
 
 target_link_libraries(SnakeGame ${SFML_LIBS})
+target_link_libraries(SnakeGameLib ${SFML_LIBS})
 
 # Copier les actifs (fonts) dans le répertoire de build
 add_custom_command(TARGET SnakeGame POST_BUILD
@@ -59,7 +62,4 @@ add_custom_command(TARGET SnakeGame POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${sfml_BINARY_DIR}/lib/Debug/sfml-system-d-2.dll"
             "$<TARGET_FILE_DIR:SnakeGame>/sfml-system-d-2.dll"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${sfml_BINARY_DIR}/lib/Debug/sfml-audio-d-2.dll"
-            "$<TARGET_FILE_DIR:SnakeGame>/sfml-audio-d-2.dll"
     )
