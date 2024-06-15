@@ -12,6 +12,8 @@ public:
     ScoreDisplay(ScoreManager& _scoreManager);
 
 public:
+    inline sf::Text& GetScoreText() { return scoreText; }
+
     void UpdateScoreText();
 
     void Draw(sf::RenderWindow& window);

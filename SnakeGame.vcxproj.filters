@@ -152,7 +152,7 @@
     <ClInclude Include="include\Utils\Utils.h">
       <Filter>include\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreDisplayTest.h">
+    <ClInclude Include="tests\ScoreDisplayTest.h">
       <Filter>tests</Filter>
     </ClInclude>
   </ItemGroup>

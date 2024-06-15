@@ -2,8 +2,8 @@
 #include <gmock/gmock.h>
 #include <SFML/Graphics.hpp>
 #include "ScoreDisplay.h"
-#include "ScoreManager.h"
 
+// Mock class for ScoreManager
 class MockScoreManager : public ScoreManager {
 public:
     MOCK_METHOD(int, GetScore, (), (const));
@@ -25,21 +25,19 @@ protected:
 };
 
 TEST_F(ScoreDisplayTest, InitialScoreText) {
-    EXPECT_CALL(mockScoreManager, GetScore()).WillOnce(testing::Return(0));
+    EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(0));
     scoreDisplay->UpdateScoreText();
-    // Pas de méthode directe pour vérifier le texte, on vérifie donc si l'appel fonctionne sans erreur.
+    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 0"); // Remplacez cette ligne si GetText() n'existe pas
 }
 
 TEST_F(ScoreDisplayTest, UpdateScoreText) {
-    EXPECT_CALL(mockScoreManager, GetScore()).WillOnce(testing::Return(100));
+    EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(100));
     scoreDisplay->UpdateScoreText();
-    // Ici aussi, on s'assure que l'appel fonctionne correctement.
+    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 100"); // Remplacez cette ligne si GetText() n'existe pas
 }
 
 TEST_F(ScoreDisplayTest, DrawScoreDisplay) {
-    EXPECT_CALL(mockScoreManager, GetScore()).WillOnce(testing::Return(200));
+    EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(200));
     scoreDisplay->UpdateScoreText();
-    // Pour vérifier le rendu, nous nous assurons que Draw peut être appelé sans erreur.
     scoreDisplay->Draw(window);
 }
-

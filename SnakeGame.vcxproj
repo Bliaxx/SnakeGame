@@ -184,7 +184,7 @@
     <ClInclude Include="include\Settings\MoveSettings.h" />
     <ClInclude Include="include\Utils\Constants.h" />
     <ClInclude Include="include\Utils\Utils.h" />
-    <ClInclude Include="ScoreDisplayTest.h" />
+    <ClInclude Include="tests\ScoreDisplayTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
