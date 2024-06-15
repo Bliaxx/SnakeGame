@@ -47,3 +47,4 @@ TEST_F(ScoreDisplayTest, DrawScoreDisplay) {
     scoreDisplay->UpdateScoreText();
     scoreDisplay->Draw(window);
     ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 200");
+}
