@@ -21,7 +21,6 @@ public:
     ~Game();
 
 private:
-    void InitGame();
     void Update(const float _dt);
     void UpdateGameObjects(const float _dt);
     void CheckCollisions();
@@ -29,6 +28,9 @@ private:
     void ClearGame();
 
 public:
+    inline const std::unordered_map<std::string, sf::Drawable*> GetGameObjects() const { return gameObjects; }
+
+    void InitGame();
     void ResetGame();
     void Run();
 

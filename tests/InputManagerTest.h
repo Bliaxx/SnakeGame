@@ -1,20 +1,10 @@
+#pragma once
+
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 #include "InputManager.h"
-#include "Window.h"
 #include <SFML/Graphics.hpp>
+#include "MockWindow.h"
 
-class MockWindow : public Window {
-private:
-    sf::RenderWindow mockRenderWindow;
-
-public:
-    MockWindow() : Window(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, "Snake Game") {}
-
-public:
-    MOCK_METHOD(bool, pollEvent, (sf::Event& event), (override));
-    MOCK_METHOD(void, close, (), (override));
-};
 
 class InputManagerTest : public ::testing::Test {
 protected:

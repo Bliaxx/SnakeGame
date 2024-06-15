@@ -12,7 +12,7 @@ private:
 	std::unordered_map<std::string, std::function<void()>> actionBindings;
 
 public:
-	void ProcessInput(IWindow* _window);
-	void BindKey(sf::Keyboard::Key _keyToBind, std::string _actionName);
-	void BindAction(std::string _actionToBind, std::function<void()> _functionRef);
+	virtual void ProcessInput(IWindow* _window);
+	virtual void BindKey(sf::Keyboard::Key _keyToBind, std::string _actionName);
+	virtual void BindAction(std::string _actionToBind, std::function<void()> _functionRef);
 };

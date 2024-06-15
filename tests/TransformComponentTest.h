@@ -1,3 +1,5 @@
+#pragma once
+
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "TransformComponent.h"

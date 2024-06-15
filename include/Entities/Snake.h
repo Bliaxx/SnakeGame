@@ -30,27 +30,35 @@ private:
 	void InitDirectionsOffset();
 	void CreateSnakeBody(sf::Vector2f _initialPosition, const int _bodyLength, const sf::Color _bodyColor, const bool _enablePixelCoordinateBodySnake);
 
-	void TurnUp();
-	void TurnDown();
-	void TurnLeft();
-	void TurnRight();
-	void Move(const float _dt) override;
-
 	void Update(const float _dt) override;
 
 	void draw(sf::RenderTarget& _target, sf::RenderStates _states) const override;
 
-	sf::Vector2f GetPositionPixelCoordinate() const override;
-	sf::Vector2f GetPositionCellCoordinate() const override;
-	void SetPosition(sf::Vector2f _pos);
 	void AddPosition(sf::Vector2f _addPos);
 
+	void OnCollision(IBounded* _other) override;
+
+public:
+	inline int GetSnakeBodySize() const { return snakeBody.size(); }
+
+	sf::Vector2f GetPositionPixelCoordinate() const override;
+	sf::Vector2f GetPositionCellCoordinate() const override;
+
+	sf::FloatRect GetBounds() const override { return snakeBody[0].GetBounds(); }
+
+	void TurnUp();
+	void TurnDown();
+	void TurnLeft();
+	void TurnRight();
+
 	void Grow();
+
+	void SetPosition(sf::Vector2f _pos);
+
+	void Move(const float _dt) override;
 
 	void HandleEdgeCrossing();
 
 	void CheckSelfCollision();
-	sf::FloatRect GetBounds() const override { return snakeBody[0].GetBounds(); }
-	void OnCollision(IBounded* _other) override;
 };
 
