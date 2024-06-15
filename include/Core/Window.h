@@ -4,10 +4,10 @@
 
 class Window : public IWindow {
 private:
-    sf::RenderWindow& window;
+    sf::RenderWindow window;
 
 public:
-    Window(sf::RenderWindow& window) : window(window) {}
+    Window(const int _windowWidth, const int _windowHeight, const std::string _nameWindow) : window(sf::VideoMode(_windowWidth, _windowHeight), _nameWindow) {}
 
 public:
     inline sf::RenderWindow& GetRenderWindow() override { return window; }

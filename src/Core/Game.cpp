@@ -6,7 +6,7 @@
 
 Game::Game() : scoreDisplay(scoreManager)
 {
-    window = new Window(sf::RenderWindow(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), "Snake Game"));
+    window = new Window(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, "Snake Game");
     InitGame();
 }
 
