@@ -6,6 +6,8 @@
 #include "ScoreDisplay.h"
 #include "IWindow.h"
 
+class IBounded;
+
 class Game {
 private:
     IWindow* window;
@@ -23,6 +25,8 @@ public:
 private:
     void Update(const float _dt);
     void UpdateGameObjects(const float _dt);
+    void CheckCollisionBetween(sf::Drawable* obj1, sf::Drawable* obj2);
+    void HandleCollision(IBounded* bounded1, IBounded* bounded2);
     void CheckCollisions();
     void Render();
     void ClearGame();

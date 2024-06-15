@@ -9,15 +9,15 @@
 class InputManagerTest : public ::testing::Test {
 protected:
     InputManager inputManager;
-    std::unique_ptr<MockWindow> mockWindow;
+    MockWindow* mockWindow;
     sf::Event event;
 
     virtual void SetUp() override {
-        mockWindow = std::make_unique<MockWindow>();
+        mockWindow = new MockWindow();
     }
 
     virtual void TearDown() override {
-        mockWindow.reset();
+        delete mockWindow;
     }
 };
 
@@ -35,7 +35,7 @@ TEST_F(InputManagerTest, BindKey) {
     event.type = sf::Event::KeyPressed;
     event.key.code = sf::Keyboard::A;
 
-    inputManager.ProcessInput(mockWindow.get());
+    inputManager.ProcessInput(mockWindow);
 }
 
 TEST_F(InputManagerTest, BindAction) {
@@ -51,7 +51,7 @@ TEST_F(InputManagerTest, BindAction) {
         .WillOnce(testing::DoAll(testing::SetArgReferee<0>(event), testing::Return(true)))
         .WillRepeatedly(testing::Return(false));
 
-    inputManager.ProcessInput(mockWindow.get());
+    inputManager.ProcessInput(mockWindow);
 
     ASSERT_TRUE(actionCalled);
 }
@@ -65,5 +65,5 @@ TEST_F(InputManagerTest, ProcessInput_CloseWindow) {
 
     EXPECT_CALL(*mockWindow, close()).Times(1);
 
-    inputManager.ProcessInput(mockWindow.get());
+    inputManager.ProcessInput(mockWindow);
 }
