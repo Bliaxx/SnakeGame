@@ -12,7 +12,7 @@ public:
     ScoreDisplay(ScoreManager& _scoreManager);
 
 public:
-    inline sf::Text& GetScoreText() { return scoreText; }
+    inline std::string GetScoreText() const { return scoreText.getString(); }
 
     void UpdateScoreText();
 

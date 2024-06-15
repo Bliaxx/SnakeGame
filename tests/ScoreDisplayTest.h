@@ -3,10 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include "ScoreDisplay.h"
 
-// Mock class for ScoreManager
 class MockScoreManager : public ScoreManager {
 public:
-    MOCK_METHOD(int, GetScore, (), (const));
+    MOCK_METHOD(int, GetScore, (), (const, override));
 };
 
 class ScoreDisplayTest : public ::testing::Test {
@@ -16,6 +15,7 @@ protected:
     sf::RenderWindow window;
 
     virtual void SetUp() {
+        EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(0));
         scoreDisplay = new ScoreDisplay(mockScoreManager);
     }
 
@@ -25,19 +25,25 @@ protected:
 };
 
 TEST_F(ScoreDisplayTest, InitialScoreText) {
-    EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(0));
+    EXPECT_CALL(mockScoreManager, GetScore())
+        .Times(1)
+        .WillOnce(testing::Return(0));
     scoreDisplay->UpdateScoreText();
-    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 0"); // Remplacez cette ligne si GetText() n'existe pas
+    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 0");
 }
 
 TEST_F(ScoreDisplayTest, UpdateScoreText) {
-    EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(100));
+    EXPECT_CALL(mockScoreManager, GetScore())
+        .Times(1)
+        .WillOnce(testing::Return(100));
     scoreDisplay->UpdateScoreText();
-    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 100"); // Remplacez cette ligne si GetText() n'existe pas
+    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 100");
 }
 
 TEST_F(ScoreDisplayTest, DrawScoreDisplay) {
-    EXPECT_CALL(mockScoreManager, GetScore()).Times(1).WillOnce(testing::Return(200));
+    EXPECT_CALL(mockScoreManager, GetScore())
+        .Times(1)
+        .WillOnce(testing::Return(200));
     scoreDisplay->UpdateScoreText();
     scoreDisplay->Draw(window);
-}
+    ASSERT_EQ(scoreDisplay->GetScoreText(), "Score: 200");

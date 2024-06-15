@@ -12,5 +12,5 @@ public:
 
     inline void ResetScore() {score = 0;}
 
-    inline int GetScore() const {return score;}
+    inline virtual int GetScore() const {return score;}
 };
