@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "ScoreDisplayTest.h"
+#include "TransformComponentTest.h"
+#include "FoodTest.h"
+#include "InputManagerTest.h"
 
 int main(int argc, char** argv)
 {

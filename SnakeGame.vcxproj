@@ -166,9 +166,13 @@
     <ClCompile Include="tests\TestMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Clone dépôt git\SnakeGame\tests\FoodTest.h" />
+    <ClInclude Include="..\..\..\..\..\Clone dépôt git\SnakeGame\tests\InputManagerTest.h" />
+    <ClInclude Include="..\..\..\..\..\Clone dépôt git\SnakeGame\tests\TransformComponentTest.h" />
     <ClInclude Include="include\Core\Game.h" />
     <ClInclude Include="include\Core\GameObject.h" />
     <ClInclude Include="include\Core\TransformComponent.h" />
+    <ClInclude Include="include\Core\Window.h" />
     <ClInclude Include="include\Display\ScoreDisplay.h" />
     <ClInclude Include="include\Entities\Food.h" />
     <ClInclude Include="include\Entities\Snake.h" />
@@ -179,6 +183,7 @@
     <ClInclude Include="include\Interfaces\IMovable.h" />
     <ClInclude Include="include\Interfaces\IScorable.h" />
     <ClInclude Include="include\Interfaces\IUpdatable.h" />
+    <ClInclude Include="include\Interfaces\IWindow.h" />
     <ClInclude Include="include\Managers\InputManager.h" />
     <ClInclude Include="include\Managers\ScoreManager.h" />
     <ClInclude Include="include\Settings\MoveSettings.h" />

@@ -1,10 +1,12 @@
 #include "Game.h"
 #include "Snake.h"
 #include "Food.h"
+#include "Window.h"
 #include <iostream>
 
-Game::Game() : window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), "Snake Game"), scoreDisplay(scoreManager)
+Game::Game() : scoreDisplay(scoreManager)
 {
+    window = new Window(sf::RenderWindow(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), "Snake Game"));
     InitGame();
 }
 
@@ -23,7 +25,7 @@ void Game::Run()
 {
     std::srand(std::time(nullptr));
 
-    while (window.isOpen())
+    while (window->GetRenderWindow().isOpen())
     {
         sf::Time _elapsedTime = clock.restart();
         deltaTime = _elapsedTime.asSeconds();
@@ -43,11 +45,11 @@ void Game::InitGame()
 void Game::Update(const float _dt)
 {
     sf::Event _event;
-    while (window.pollEvent(_event))
+    while (window->pollEvent(_event))
     {
         if (_event.type == sf::Event::Closed)
         {
-            window.close();
+            window->close();
         }
     }
     UpdateGameObjects(_dt);
@@ -84,13 +86,13 @@ void Game::CheckCollisions()
 
 void Game::Render()
 {
-    window.clear(sf::Color::Black);
+    window->GetRenderWindow().clear(sf::Color::Black);
     for (auto& _currentGameObjects : gameObjects)
     {
-        window.draw(*_currentGameObjects.second);
+        window->GetRenderWindow().draw(*_currentGameObjects.second);
     }
-    scoreDisplay.Draw(window);
-    window.display();
+    scoreDisplay.Draw(window->GetRenderWindow());
+    window->GetRenderWindow().display();
 }
 
 void Game::ClearGame()

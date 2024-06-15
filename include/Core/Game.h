@@ -4,10 +4,11 @@
 #include "InputManager.h"
 #include "ScoreManager.h"
 #include "ScoreDisplay.h"
+#include "IWindow.h"
 
 class Game {
 private:
-    sf::RenderWindow window;
+    IWindow* window;
     InputManager inputManager;
     ScoreManager scoreManager;
     ScoreDisplay scoreDisplay;
@@ -31,6 +32,6 @@ public:
     void ResetGame();
     void Run();
 
-    sf::Vector2f GetCellsResolution() const { return static_cast<sf::Vector2f>(window.getSize()) * 1.0f / static_cast<float>(Constants::CELL_SIZE); }
+    virtual sf::Vector2f GetCellsResolution() const { return static_cast<sf::Vector2f>(window->GetRenderWindow().getSize()) * 1.0f / static_cast<float>(Constants::CELL_SIZE); }
     inline ScoreManager& GetScoreManager() { return scoreManager; }
 };
