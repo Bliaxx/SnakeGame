@@ -1,13 +1,14 @@
 #include "InputManager.h"
+#include "IWindow.h"
 
-void InputManager::ProcessInput(sf::RenderWindow& _window)
+void InputManager::ProcessInput(IWindow* _window)
 {
 	sf::Event _event;
-	while (_window.pollEvent(_event))
+	while (_window->pollEvent(_event))
 	{
 		if (_event.type == sf::Event::Closed)
 		{
-			_window.close();
+			_window->close();
 		}
 		else if (_event.type == sf::Event::KeyPressed)
 		{

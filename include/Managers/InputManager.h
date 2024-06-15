@@ -3,6 +3,8 @@
 #include <functional>
 #include<SFML\Graphics.hpp>
 
+class IWindow;
+
 class InputManager
 {
 private:
@@ -10,7 +12,7 @@ private:
 	std::unordered_map<std::string, std::function<void()>> actionBindings;
 
 public:
-	void ProcessInput(sf::RenderWindow& _window);
+	void ProcessInput(IWindow* _window);
 	void BindKey(sf::Keyboard::Key _keyToBind, std::string _actionName);
 	void BindAction(std::string _actionToBind, std::function<void()> _functionRef);
 };
