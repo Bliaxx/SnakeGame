@@ -1,33 +1,23 @@
+#pragma once
+
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 #include "InputManager.h"
-#include "Window.h"
 #include <SFML/Graphics.hpp>
+#include "MockWindow.h"
 
-class MockWindow : public Window {
-private:
-    sf::RenderWindow mockRenderWindow;
-
-public:
-    MockWindow() : Window(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, "Snake Game") {}
-
-public:
-    MOCK_METHOD(bool, pollEvent, (sf::Event& event), (override));
-    MOCK_METHOD(void, close, (), (override));
-};
 
 class InputManagerTest : public ::testing::Test {
 protected:
     InputManager inputManager;
-    std::unique_ptr<MockWindow> mockWindow;
+    MockWindow* mockWindow;
     sf::Event event;
 
     virtual void SetUp() override {
-        mockWindow = std::make_unique<MockWindow>();
+        mockWindow = new MockWindow();
     }
 
     virtual void TearDown() override {
-        mockWindow.reset();
+        delete mockWindow;
     }
 };
 
@@ -45,7 +35,7 @@ TEST_F(InputManagerTest, BindKey) {
     event.type = sf::Event::KeyPressed;
     event.key.code = sf::Keyboard::A;
 
-    inputManager.ProcessInput(mockWindow.get());
+    inputManager.ProcessInput(mockWindow);
 }
 
 TEST_F(InputManagerTest, BindAction) {
@@ -61,7 +51,7 @@ TEST_F(InputManagerTest, BindAction) {
         .WillOnce(testing::DoAll(testing::SetArgReferee<0>(event), testing::Return(true)))
         .WillRepeatedly(testing::Return(false));
 
-    inputManager.ProcessInput(mockWindow.get());
+    inputManager.ProcessInput(mockWindow);
 
     ASSERT_TRUE(actionCalled);
 }
@@ -75,5 +65,5 @@ TEST_F(InputManagerTest, ProcessInput_CloseWindow) {
 
     EXPECT_CALL(*mockWindow, close()).Times(1);
 
-    inputManager.ProcessInput(mockWindow.get());
+    inputManager.ProcessInput(mockWindow);
 }

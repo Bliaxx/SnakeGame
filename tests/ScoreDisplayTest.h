@@ -1,12 +1,10 @@
+#pragma once
+
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include <SFML/Graphics.hpp>
 #include "ScoreDisplay.h"
-
-class MockScoreManager : public ScoreManager {
-public:
-    MOCK_METHOD(int, GetScore, (), (const, override));
-};
+#include "MockScoreManager.h"
 
 class ScoreDisplayTest : public ::testing::Test {
 protected:

@@ -13,6 +13,7 @@ public:
     static const sf::Color FOOD_COLOR;
 
     static const int INITIAL_SNAKE_LENGTH = 3;
+    static const float SNAKE_SPEED_INTERVAL;
 
     static const std::string FONT_PATH;
 };

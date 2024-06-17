@@ -3,6 +3,9 @@
 
 void InputManager::ProcessInput(IWindow* _window)
 {
+	if (!_window)
+		throw std::runtime_error("ProcessInput Function : Window param is nullptr !");
+
 	sf::Event _event;
 	while (_window->pollEvent(_event))
 	{
@@ -33,5 +36,8 @@ void InputManager::BindKey(sf::Keyboard::Key _keyToBind, std::string _actionName
 
 void InputManager::BindAction(std::string _actionToBind, std::function<void()> _functionRef)
 {
+	if (!_functionRef)
+		throw std::runtime_error("BindAction Function : functionRef param is null");
+
 	actionBindings[_actionToBind] = _functionRef;
 }

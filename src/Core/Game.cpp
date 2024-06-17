@@ -38,20 +38,12 @@ void Game::Run()
 
 void Game::InitGame()
 {
-    gameObjects["Snake_Actor"] = new Snake(*this, sf::Vector2f(10.f, 10.f), Constants::INITIAL_SNAKE_LENGTH, Constants::SNAKE_COLOR, false, MoveSettings(1.0f), inputManager);
+    gameObjects["Snake_Actor"] = new Snake(*this, sf::Vector2f(10.f, 10.f), Constants::INITIAL_SNAKE_LENGTH, Constants::SNAKE_COLOR, false, MoveSettings(Constants::SNAKE_SPEED_INTERVAL), inputManager);
     gameObjects["Food_Actor"] = new Food(*this, sf::Vector2f(15.f, 10.f), Constants::FOOD_COLOR, false);
 }
 
 void Game::Update(const float _dt)
 {
-    sf::Event _event;
-    while (window->pollEvent(_event))
-    {
-        if (_event.type == sf::Event::Closed)
-        {
-            window->close();
-        }
-    }
     UpdateGameObjects(_dt);
     CheckCollisions();
     scoreDisplay.UpdateScoreText();
@@ -65,21 +57,31 @@ void Game::UpdateGameObjects(const float _dt)
         if (_objectUpdatable) _objectUpdatable->Update(_dt);
     }
 }
+void Game::CheckCollisionBetween(sf::Drawable* obj1, sf::Drawable* obj2)
+{
+    auto bounded1 = dynamic_cast<IBounded*>(obj1);
+    auto bounded2 = dynamic_cast<IBounded*>(obj2);
+
+    if (bounded1 && bounded2 && bounded1->GetBounds().intersects(bounded2->GetBounds())) {
+        HandleCollision(bounded1, bounded2);
+    }
+}
+
+void Game::HandleCollision(IBounded* bounded1, IBounded* bounded2)
+{
+    if (auto collidable1 = dynamic_cast<ICollidable*>(bounded1)) {
+        collidable1->OnCollision(bounded2);
+    }
+    if (auto collidable2 = dynamic_cast<ICollidable*>(bounded2)) {
+        collidable2->OnCollision(bounded1);
+    }
+}
 
 void Game::CheckCollisions()
 {
     for (auto it1 = gameObjects.begin(); it1 != gameObjects.end(); ++it1) {
         for (auto it2 = std::next(it1); it2 != gameObjects.end(); ++it2) {
-            IBounded* bounded1 = dynamic_cast<IBounded*>(it1->second);
-            IBounded* bounded2 = dynamic_cast<IBounded*>(it2->second);
-            if (bounded1 && bounded2) {
-                if (bounded1->GetBounds().intersects(bounded2->GetBounds())) {
-                    ICollidable* collidable1 = dynamic_cast<ICollidable*>(it1->second);
-                    ICollidable* collidable2 = dynamic_cast<ICollidable*>(it2->second);
-                    if (collidable1) collidable1->OnCollision(bounded2);
-                    if (collidable2) collidable2->OnCollision(bounded1);
-                }
-            }
+            CheckCollisionBetween(it1->second, it2->second);
         }
     }
 }

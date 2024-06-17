@@ -99,8 +99,7 @@ void Snake::Update(const float _dt)
 	static float elapsedTime = 0.f;
 	elapsedTime += _dt;
 
-	float moveInterval = 0.18f;
-	if (elapsedTime >= moveInterval) {
+	if (elapsedTime >= moveSettings.GetSpeedInterval()) {
 		Move(_dt);
 		elapsedTime = 0.f;
 	}

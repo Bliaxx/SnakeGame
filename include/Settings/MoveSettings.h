@@ -3,13 +3,13 @@
 
 class MoveSettings
 {
-	float speed;
+	float speedInterval;
 
 public:
-	MoveSettings(const float _speed) : speed(_speed) {};
+	MoveSettings(const float _speedInterval) : speedInterval(_speedInterval) {};
 	~MoveSettings() = default;
 
 public:
-	float GetSpeed() { return speed; }
-	void SetSpeed(const float _speed) { speed = _speed; }
+	float GetSpeedInterval() { return speedInterval; }
+	void SetSpeedInterval(const float _speedInterval) { speedInterval = _speedInterval; }
 };

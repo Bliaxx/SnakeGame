@@ -1,14 +1,9 @@
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
-#include "Food.h"
-#include "Game.h"
-#include <iostream>
+#pragma once
 
-// Mock class for Game
-class MockGame : public Game {
-public:
-    MOCK_METHOD(sf::Vector2f, GetCellsResolution, (), (const, override));
-};
+#include <gtest/gtest.h>
+#include "Food.h"
+#include "MockGame.h"
+#include <iostream>
 
 // Classe de test pour Food
 class FoodTest : public ::testing::Test {

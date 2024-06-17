@@ -189,7 +189,15 @@
     <ClInclude Include="include\Settings\MoveSettings.h" />
     <ClInclude Include="include\Utils\Constants.h" />
     <ClInclude Include="include\Utils\Utils.h" />
+    <ClInclude Include="tests\MockGame.h" />
+    <ClInclude Include="tests\MockInputManager.h" />
+    <ClInclude Include="tests\MockScoreManager.h" />
+    <ClInclude Include="tests\MockWindow.h" />
+    <ClInclude Include="tests\MoveSettingsTest.h" />
     <ClInclude Include="tests\ScoreDisplayTest.h" />
+    <ClInclude Include="tests\ScoreManagerTest.h" />
+    <ClInclude Include="tests\SnakeSegmentTest.h" />
+    <ClInclude Include="tests\SnakeTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -170,5 +170,29 @@
     <ClInclude Include="include\Core\Window.h">
       <Filter>include\Core</Filter>
     </ClInclude>
+    <ClInclude Include="tests\MockGame.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\ScoreManagerTest.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\SnakeSegmentTest.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\SnakeTest.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\MockInputManager.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\MockScoreManager.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\MockWindow.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\MoveSettingsTest.h">
+      <Filter>tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
